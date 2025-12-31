@@ -1,0 +1,135 @@
+# Enable the rewrite engine
+
+RewriteEngine On
+
+
+
+# Redirect all HTTP requests to HTTPS
+
+RewriteCond %{HTTPS} !=on
+
+RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+
+
+
+# Redirect www to non-www with HTTPS
+
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+
+
+
+
+# Redirect index.php to the root domain
+
+RewriteCond %{THE_REQUEST} \s/index\.php [NC]
+
+RewriteRule ^index\.php$ https://%{HTTP_HOST}/ [L,R=301]
+
+
+
+
+
+# Redirect old product URLs to new SEO-friendly URLs
+
+RewriteCond %{THE_REQUEST} \s/products\.php\?id=3[\s&] [NC]
+
+RewriteRule ^ /products/krushna-fire-fighting-robot? [R=301,L]
+
+
+
+RewriteCond %{THE_REQUEST} \s/products\.php\?id=10[\s&] [NC]
+
+RewriteRule ^ /products/sona-3.5-ai-humanoid-robot? [R=301,L]
+
+
+
+RewriteCond %{THE_REQUEST} \s/products\.php\?id=7[\s&] [NC]
+
+RewriteRule ^ /products/xena-5.0-unmenned-ground-vehicle? [R=301,L]
+
+
+
+RewriteCond %{THE_REQUEST} \s/products\.php\?id=15[\s&] [NC]
+
+RewriteRule ^ /products/sona-0.5-intelligent-service-robot? [R=301,L]
+
+
+
+RewriteCond %{THE_REQUEST} \s/products\.php\?id=12[\s&] [NC]
+
+RewriteRule ^ /products/xena-4.0-atv-robot? [R=301,L]
+
+
+
+RewriteCond %{THE_REQUEST} \s/products\.php\?id=5[\s&] [NC]
+
+RewriteRule ^ /products/xena-5.0-fire-fighting-robot? [R=301,L]
+
+
+
+RewriteCond %{THE_REQUEST} \s/products\.php\?id=13[\s&] [NC]
+
+RewriteRule ^ /products/eli-screening-robot-covid-19? [R=301,L]
+
+
+
+RewriteCond %{THE_REQUEST} \s/products\.php\?id=16[\s&] [NC]
+
+RewriteRule ^ /products/sona-1.5-service-robot? [R=301,L]
+
+
+RewriteCond %{THE_REQUEST} \s/products\.php\?id=9[\s&] [NC]
+
+RewriteRule ^ /products/sona-2.5-humanoid-service-robot? [R=301,L]
+
+
+RewriteCond %{THE_REQUEST} \s/products\.php\?id=110[\s&] [NC]
+
+RewriteRule ^ /products/xena-5.0-tactical-combat-robot? [R=301,L]
+
+
+
+RewriteCond %{THE_REQUEST} \s/products\.php\?id=8[\s&] [NC]
+
+RewriteRule ^ /products/xena-6.0-machine-hole-cleaning-robot? [R=301,L]
+
+
+
+RewriteCond %{THE_REQUEST} \s/products\.php\?id=11[\s&] [NC]
+
+RewriteRule ^ /products/xena-3.5-ai-humanoid-service-robot? [R=301,L]
+
+
+RewriteCond %{THE_REQUEST} \s/products\.php\?id=6[\s&] [NC]
+
+RewriteRule ^ /products/krushna-tactical-combat-robot? [R=301,L]
+
+# Handle the specific product name URLs to internal PHP script
+
+RewriteRule ^products/krushna-fire-fighting-robot/?$ /products.php?id=3 [L,QSA]
+
+RewriteRule ^products/krushna-tactical-combat-robot/?$ /products.php?id=6 [L,QSA]
+
+RewriteRule ^products/sona-3.5-ai-humanoid-robot/?$ /products.php?id=10 [L,QSA]
+
+RewriteRule ^products/xena-5.0-unmenned-ground-vehicle/?$ /products.php?id=7 [L,QSA]
+
+RewriteRule ^products/sona-0.5-intelligent-service-robot/?$ /products.php?id=15 [L,QSA]
+
+RewriteRule ^products/xena-4.0-atv-robot/?$ /products.php?id=12 [L,QSA]
+
+RewriteRule ^products/xena-5.0-fire-fighting-robot/?$ /products.php?id=5 [L,QSA]
+
+RewriteRule ^products/eli-screening-robot-covid-19/?$ /products.php?id=13 [L,QSA]
+
+RewriteRule ^products/sona-1.5-service-robot/?$ /products.php?id=16 [L,QSA]
+
+RewriteRule ^products/xena-5.0-tactical-combat-robot?$ /products.php?id=110 [L,QSA]
+
+RewriteRule ^products/xena-6.0-machine-hole-cleaning-robot/?$ /products.php?id=8 [L,QSA]
+
+RewriteRule ^products/xena-3.5-ai-humanoid-service-robot/?$ /products.php?id=11 [L,QSA]
+RewriteRule ^products/sona-2.5-humanoid-service-robot/?$ /products.php?id=9 [L,QSA]

@@ -1,0 +1,20 @@
+RewriteEngine On
+
+# Exclude image files from being routed through PHP
+<FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
+    SetHandler none
+    Header set Content-Type image/jpeg
+</FilesMatch>
+
+# Ensure requests for image files are served directly
+RewriteCond %{REQUEST_URI} !\.(jpg|jpeg|png|gif|webp)$ [NC]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Route all other requests through index.php
+RewriteRule ^ index.php [L]
+
+# Fallback for missing image files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^uploads/products/(.*)$ /uploads/products/placeholder.jpg [L]
