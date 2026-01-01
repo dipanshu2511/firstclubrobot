@@ -1,0 +1,12 @@
+RewriteEngine Off
+
+SetHandler none
+RemoveHandler .php
+RemoveType .php
+
+AddType image/jpeg .jpg .jpeg
+AddType image/png .png
+AddType image/webp .webp
+AddType image/gif .gif
+
+Options -Indexes
